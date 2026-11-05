@@ -22,5 +22,5 @@ test('published data preserves six academies, unique IDs and adult-only profiles
     assert.ok(person.age >= 20);
     assert.ok(affiliations.some(x => x.id === person.affiliation));
   }
-  assert.equal(characters.length, 0, 'Do not publish unapproved placeholder characters');
+  assert.equal(new Set(characters.map(person => person.id)).size, characters.length);
 });

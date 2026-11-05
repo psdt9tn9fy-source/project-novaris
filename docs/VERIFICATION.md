@@ -1,0 +1,1 @@
+The Pages-path production build passes TypeScript and Vite compilation. Both data tests pass. Browser checks covered desktop rendering, six academy selections, Home key selection, personnel search, affiliation selection and reset. Public deployment and physical mobile devices require separate verification.

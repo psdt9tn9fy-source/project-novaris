@@ -17,8 +17,10 @@ export function Intro({ finish }: { finish: () => void }) {
         .to('.intro-skip', { opacity: 0, duration: .2 }, 2.3);
     }, root);
     const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') finish(); };
+    // Bound the opening even if animation frames are throttled by the browser.
+    const deadline = window.setTimeout(finish, 3200);
     window.addEventListener('keydown', escape);
-    return () => { context.revert(); window.removeEventListener('keydown', escape); };
+    return () => { context.revert(); window.clearTimeout(deadline); window.removeEventListener('keydown', escape); };
   }, [finish]);
 
   return <div ref={root} className="intro" role="dialog" aria-modal="true" aria-label="노바리스 오프닝">
